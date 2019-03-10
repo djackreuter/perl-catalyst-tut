@@ -1,4 +1,4 @@
-package Hello::Controller::Site;
+package Hello::Controller::Books;
 use Moose;
 use namespace::autoclean;
 
@@ -6,7 +6,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 =head1 NAME
 
-Hello::Controller::Site - Catalyst Controller
+Hello::Controller::Books - Catalyst Controller
 
 =head1 DESCRIPTION
 
@@ -24,16 +24,14 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Matched Hello::Controller::Site in Site.');
+    $c->response->body('Matched Hello::Controller::Books in Books.');
 }
 
-sub test :Local {
+sub list :Local {
     my ($self, $c) = @_;
-
-    $c->stash({
-        username => 'jhopkins',
-        template => 'site/test.tt'
-    });
+    # $c->stash(books => [$c->model('DB::Book')->all]);
+    $c->stash(books => [$c->model('DB')->resultset('Book')->all]);
+    $c->stash(template => 'books/list.tt2');
 }
 
 =encoding utf8

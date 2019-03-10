@@ -11,6 +11,7 @@ all_from 'lib/Hello.pm';
 
 requires 'Catalyst::Runtime' => '5.90124';
 requires 'Catalyst::Plugin::ConfigLoader';
+requires 'Catalyst::Plugin::StackTrace';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Action::RenderView';
 requires 'Moose';
