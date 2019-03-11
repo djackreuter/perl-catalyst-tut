@@ -6,8 +6,14 @@ extends 'Catalyst::View::TT';
 
 __PACKAGE__->config(
     TEMPLATE_EXTENSION => '.tt2',
-    render_die => 1,
+    INCLUDE_PATH => [
+        Hello->path_to( 'root', 'src' ),
+    ],
+    TIMER => 0,
+    WRAPPER => 'wrapper.tt2',
 );
+
+
 
 =head1 NAME
 
